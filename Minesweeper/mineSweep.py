@@ -18,17 +18,18 @@ def checkSurround(x,y,m,n):
     if(n > y + 1 and 0 <= x and minefield[x][y+1] == "*"):
         count += 1
     #Check SouthEast
-    if(n > y + 1 and m > x and minefield[x+1][y+1] == "*"):
+    if(n > y + 1 and m > x + 1 and minefield[x+1][y+1] == "*"):
         count += 1
     #Check East
-    if(0 <= y - 1 and m > x and minefield[x+1][y] == "*"):
+    if(0 <= y and m > x + 1 and minefield[x+1][y] == "*"):
         count += 1
     #Check NorthEast
-    if(0 <= y - 1 and m > x and minefield[x+1][y-1] == "*"):
+    if(0 <= y - 1 and m > x + 1 and minefield[x+1][y-1] == "*"):
         count += 1
     return str(count)
 
 def mineSweep():
+    global minefield
     restrictions = raw_input().split(" ")
     m = int(restrictions[0])
     n = int(restrictions[1])
@@ -50,7 +51,7 @@ def mineSweep():
         for i in range(m):
             print "".join(minefield[i])
         field += 1
-        restrictions = raw_input()
+        restrictions = raw_input().split(" ")
         m = int(restrictions[0])
         n = int(restrictions[1])
 
